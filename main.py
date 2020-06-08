@@ -10,7 +10,9 @@ class interface(App):
     def build(self):
         root_widget = BoxLayout(orientation="vertical")
 
-        output_label = Label(size_hint_y=1)
+        Erkennung = GridLayout(cols = 2,size_hint_y=1)
+        Erkennung.add_widget(Label(text='Anmomale'))
+        Erkennung.add_widget(Button(text="AN"))
 
         button_symbols = ('1', '2', '3', '+',
                           '4', '5', '6', '-',
@@ -25,7 +27,7 @@ class interface(App):
                               size_hint_y=None,
                               height=100)
 
-        root_widget.add_widget(output_label)
+        root_widget.add_widget(Erkennung)
         root_widget.add_widget(button_grid)
         root_widget.add_widget(clear_button)
 
