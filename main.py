@@ -21,15 +21,7 @@ class interface(App):
         Erkennung.add_widget(Label(text='Anmomalie'))
         Erkennung.add_widget(Button(text="AN"))
 
-        button_symbols = ('1', '2', '3', '+',
-                          '4', '5', '6', '-',
-                          '7', '8', '9', '.',
-                          '0', '*', '/', '=')
-
-        button_grid = GridLayout(cols=4, size_hint_y=2)
-        for symbol in button_symbols:
-            button_grid.add_widget(Button(text=symbol))
-
+    
         input_grid = GridLayout(cols=3,size_hint_y=2)
         for i in range(3):
             input_grid.add_widget(Button(text="+"))
