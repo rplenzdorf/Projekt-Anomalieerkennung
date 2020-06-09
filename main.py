@@ -6,10 +6,12 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
+from kivy.graphics import Color
 
 p=5
 n=10
 w=1
+r = Color(1,0,0)
 
 class interface(App):
     def build(self):
@@ -50,6 +52,16 @@ class interface(App):
         def p_down(p):
             input_grid.children[5].text="Leistung:\n"+str(0)                   
         input_grid.children[2].bind(on_press=(p_down))
+
+        def erkennung_wechseln(self):
+            if Erkennung.children[0].text=="AN":
+                Erkennung.children[0].text="AUS"
+
+            else:
+                Erkennung.children[0].text="AN"
+        Erkennung.children[0].bind(on_press=erkennung_wechseln)
+
+
 
         root_widget.add_widget(Erkennung)
         root_widget.add_widget(input_grid)
