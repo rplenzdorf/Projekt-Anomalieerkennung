@@ -11,7 +11,7 @@ from kivy.graphics import Color
 p=5
 n=10
 w=1
-r = Color(1,0,0)
+
 
 class interface(App):
     def build(self):
