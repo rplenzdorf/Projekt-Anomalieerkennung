@@ -7,24 +7,24 @@ from opcua import Server
 
 from MainWindow import Ui_MainWindow
 
-# server = Server()
-# url = "opc.tcp://129.168.0.10:4840"
+server = Server()
+url = "opc.tcp://129.168.0.10:4840" # Ip anpassen
 
-# server.set_endpoint(url)
-# name = "OPCUA_SERVER"
-# addspace = server.get_objects_node()
+server.set_endpoint(url)
+name = "OPCUA_SERVER"
+addspace = server.get_objects_node()
 
-# node = server.get_objects_node()
+node = server.get_objects_node()
 
-# param = node.add_object(addspace, "parameters")
+param = node.add_object(addspace, "parameters")
 
-# DesE = param.add_variable(addspace, "Descend e", 0)
-# AscE = param.add_variable(addspace, "Ascend e", 0)
+DesE = param.add_variable(addspace, "Descend e", 0)
+AscE = param.add_variable(addspace, "Ascend e", 0)
 
-# DesE.set_writable()
-# AscE.set_writable()
+DesE.set_writable()
+AscE.set_writable()
 
-# server.start()
+server.start()
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -43,18 +43,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_2.pressed.connect(self.press_2)
 
     def press_1(self):
-        # DesE.set_value(1)
+        DesE.set_value(1)
         print("gedrückt")
 
     def release_1(self):
-        # DesE.set_value(0)
+        DesE.set_value(0)
         print("losgelassen")
 
     def press_2(self):
         AscE.set_value(1)
+        print("gedrückt")
 
     def release_2(self):
         AscE.set_value(1)
+        print("gedrückt")
 
 
 if __name__ == "__main__":
