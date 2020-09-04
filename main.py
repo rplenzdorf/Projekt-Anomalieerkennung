@@ -1,66 +1,64 @@
+import time
 import sys
-import numpy as np
-import matplotlib.pyplot as plt
-from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
-from kivy.graphics import Color
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QWidget, QSizePolicy, QVBoxLayout, QSlider
+from PyQt5.QtCore import Qt
 
-p=5
-n=10
-w=1
+from opcua import Server
 
+from MainWindow import Ui_MainWindow
 
-class interface(App):
-    def build(self):
-        root_widget = BoxLayout(orientation="vertical")
+# server = Server()
+# url = "opc.tcp://129.168.0.10:4840"
 
-        Erkennung = GridLayout(cols = 2,size_hint_y=1.5)
-        Erkennung.add_widget(Label(text='Anmomalie'))
-        Erkennung.add_widget(Button(text="AN"))
+# server.set_endpoint(url)
+# name = "OPCUA_SERVER"
+# addspace = server.get_objects_node()
 
-    
-        input_grid = GridLayout(cols=3,size_hint_y=2)
-        for i in range(3):
-            input_grid.add_widget(Button(text="+"))
-        
-        input_grid.add_widget(Label(text="Leistung:\n"+str(p)))
-        input_grid.add_widget(Label(text="Drehzahl"))
-        input_grid.add_widget(Label(text="Wind:\n"+str(w)))
+# node = server.get_objects_node()
 
-        for i in range(3):
-            input_grid.add_widget(Button(text="-"))
-        
-        hack_button = Button(text='Überschreiben',
-                              size_hint_y=None,
-                              height=100)
+# param = node.add_object(addspace, "parameters")
 
-        def p_up(p):
-            input_grid.children[5].text="Leistung:\n"+str(20)                 
-        input_grid.children[8].bind(on_press=(p_up))
+# DesE = param.add_variable(addspace, "Descend e", 0)
+# AscE = param.add_variable(addspace, "Ascend e", 0)
 
-        def p_down(p):
-            input_grid.children[5].text="Leistung:\n"+str(0)                   
-        input_grid.children[2].bind(on_press=(p_down))
+# DesE.set_writable()
+# AscE.set_writable()
 
-        def erkennung_wechseln(self):
-            if Erkennung.children[0].text=="AN":
-                Erkennung.children[0].text="AUS"
+# server.start()
 
-            else:
-                Erkennung.children[0].text="AN"
-        Erkennung.children[0].bind(on_press=erkennung_wechseln)
+class MainWindow(QMainWindow, Ui_MainWindow):
 
+    def __init__(self, *args, **kwargs):
+        super(MainWindow,self).__init__(*args, **kwargs)
 
+        self.setupUi(self)
+        self.show()
 
-        root_widget.add_widget(Erkennung)
-        root_widget.add_widget(input_grid)
-        root_widget.add_widget(hack_button)
+        self.setWindowTitle("TEST opcua")
 
+        self.btn_1.pressed.connect(self.press_1)
 
-        return root_widget
+        self.btn_1.clicked.connect(self.release_1)
 
-if __name__ == "__main__":
-    interface().run()
+        self.btn_2.pressed.connect(self.press_2)
+
+    def press_1(self):
+        # DesE.set_value(1)
+        print("gedrückt")
+
+    def release_1(self):
+        # DesE.set_value(0)
+        print("losgelassen")
+
+    def press_2(self):
+        AscE.set_value(1)
+
+    def release_2(self):
+        AscE.set_value(1)
+
+app = QApplication(sys.argv)
+
+w = MainWindow()
+w.show()
+
+sys.exit(app.exec_())
