@@ -1,1 +1,0 @@
-pyuic5 opcua_ui.ui -o MainWindow.py
