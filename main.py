@@ -56,9 +56,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def release_2(self):
         AscE.set_value(1)
 
-app = QApplication(sys.argv)
 
-w = MainWindow()
-w.show()
+if __name__ == "__main__":
+    
+    app = QApplication(sys.argv)
 
-sys.exit(app.exec_())
+    w = MainWindow()
+    w.show()
+
+    sys.exit(app.exec_())
