@@ -8,11 +8,11 @@ from opcua import Server
 from MainWindow import Ui_MainWindow
 
 server = Server()
-url = "opc.tcp://129.168.0.10:4840" # Ip anpassen
-
+url = "opc.tcp://192.168.0.13:4840" # Ip anpassen
 server.set_endpoint(url)
+
 name = "OPCUA_SERVER"
-addspace = server.get_objects_node()
+addspace = server.register_namespace(name) #addspace = server.get_objects_node()
 
 node = server.get_objects_node()
 
@@ -42,6 +42,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.btn_2.pressed.connect(self.press_2)
 
+        self.btn_2.clicked.connect(self.release_2)
+
     def press_1(self):
         DesE.set_value(1)
         print("gedrückt")
@@ -55,8 +57,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         print("gedrückt")
 
     def release_2(self):
-        AscE.set_value(1)
-        print("gedrückt")
+        AscE.set_value(0)
+        print("losgelassen")
 
 
 if __name__ == "__main__":
