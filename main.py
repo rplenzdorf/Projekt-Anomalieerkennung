@@ -1,11 +1,27 @@
 import time
 import sys
+import os
+import subprocess
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QWidget, QSizePolicy, QVBoxLayout, QSlider
 from PyQt5.QtCore import Qt
 
 from opcua import Server
 
 from MainWindow import Ui_MainWindow
+
+
+"""
+Running Simulation on CMD
+current working directory is the folder the .py-file is located
+changing the working directory to the folder the simulation is located in
+"""
+subprocess.Popen('cmd /k "cd ../ & cd ./Modelica/BouncingBallFull_RPi & BouncingBallFull_RPI.exe -embeddedServer=opc-ua -rt=1"')
+#opens the command and starts the simulation !parallel! (subprocess.Popen, sonst os.system(...)) to the main.py  
+#os.system('cmd /k "cd ../ & cd ./Modelica/BouncingBallFull_RPi & BouncingBallFull_RPI.exe -embeddedServer=opc-ua -rt=1"') #os.system command
+
+"""
+Setting up Server
+"""
 
 server = Server()
 url = "opc.tcp://192.168.0.13:4840" # Ip anpassen
@@ -25,6 +41,12 @@ DesE.set_writable()
 AscE.set_writable()
 
 server.start()
+
+
+
+
+
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
