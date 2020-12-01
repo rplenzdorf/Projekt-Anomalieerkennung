@@ -2,6 +2,7 @@ import time
 import sys
 import os
 import subprocess
+import serial
 import pyqtgraph as pg
 from pyqtgraph import PlotWidget, plot
 from random import randint
@@ -14,6 +15,19 @@ from PyQt5 import uic
 pressed = False
 pen = pg.mkPen(color=(255, 255, 255))
 a = 0
+
+#-------------- Definition der Variablen mit OPC UA ----------------
+# P_ist_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+# P_soll_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+# P_ist_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+# P_soll_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+# P_ist_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# P_soll_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+
+
+
+
+#------------- QT ---------------------
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*args,**kwargs):
         super(MainWindow,self).__init__(*args,**kwargs)
@@ -25,12 +39,15 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.data_line =  self.graphWidget.plot(self.x, self.y, pen=pen)
 
-        self.timer = QtCore.QTimer()
-        self.timer.setInterval(50)
-        self.timer.timeout.connect(self.update_plot_data)
-        self.timer.start()
+        self.plot_timer = QtCore.QTimer()
+        self.plot_timer.setInterval(50)
+        self.plot_timer.timeout.connect(self.update_plot_data)
+        self.plot_timer.start()
 
-
+        self.serial_timer = QtCore.QTimer()
+        self.serial_timer.setInterval(100)
+        self.serial_timer.timeout.connect(self.send_serial)
+        self.serial_timer.start()
 
         self.btn_Home.clicked.connect(self.change_Home)
         self.btn_Wr1.clicked.connect(self.change_Wr1)
@@ -83,22 +100,28 @@ class MainWindow(QtWidgets.QMainWindow):
         self.btn_Daten.setChecked(True)
 
     def update_Slider_Pist_Wr1(self):
-        self.num_Pist_Wr1.setText(str(self.sli_Pist_Wr1.value()))
+        Pist_Wr1_hack = self.sli_Pist_Wr1.value()
+        self.num_Pist_Wr1.setText(str(Pist_Wr1_hack))
         
     def update_Slider_Pist_Wr2(self):
-        self.num_Pist_Wr2.setText(str(self.sli_Pist_Wr2.value()))
+        Pist_Wr2_hack = self.sli_Pist_Wr2.value()
+        self.num_Pist_Wr2.setText(str(Pist_Wr2_hack))
 
     def update_Slider_Pist_Wr3(self):
-        self.num_Pist_Wr3.setText(str(self.sli_Pist_Wr3.value()))
+        Pist_Wr3_hack = self.sli_Pist_Wr3.value()
+        self.num_Pist_Wr3.setText(str(Pist_Wr3_hack))
 
     def update_Slider_Psoll_Wr1(self):
-        self.num_Psoll_Wr1.setText(str(self.sli_Psoll_Wr1.value()))
+        Psoll_Wr1_hack = self.sli_Psoll_Wr1.value()
+        self.num_Psoll_Wr1.setText(str(Psoll_Wr1_hack))
         
     def update_Slider_Psoll_Wr2(self):
-        self.num_Psoll_Wr2.setText(str(self.sli_Psoll_Wr2.value()))
+        Psoll_Wr2_hack = self.sli_Psoll_Wr2.value()
+        self.num_Psoll_Wr2.setText(str(Psoll_Wr2_hack))
 
     def update_Slider_Psoll_Wr3(self):
-        self.num_Psoll_Wr3.setText(str(self.sli_Psoll_Wr3.value()))
+        Psoll_Wr3_hack = self.sli_Psoll_Wr3.value()
+        self.num_Psoll_Wr3.setText(str(Psoll_Wr3_hack))
 
     def update_plot_data(self):
         global pen
@@ -136,7 +159,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.data_line.setData(self.x, self.y, pen=pen)  # Update the data.
 
-        
+
+# Übergabe an Arduino: Trennung: :, Ende: \n, Reihenfolge: Wr1, Wr2, Wr3, P_soll_gesamt, P_ist_gesamt 
+
+
 if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
