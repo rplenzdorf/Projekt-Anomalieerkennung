@@ -11,10 +11,15 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout,
 from PyQt5.QtCore import Qt
 from PyQt5 import uic
 
-
-pressed = False
+#--------------- Alllgemeine Definitionen ------------------
+AnAus = True
+custom_Wind = True
 pen = pg.mkPen(color=(255, 255, 255))
 a = 0
+
+#--------------- Setup Serial -----------------------
+# arduno_write = serial.Serial("")
+ # arduno_read = serial.Serial("")
 
 #-------------- Definition der Variablen mit OPC UA ----------------
 # P_ist_Wr1 = clientOME.get_node("ns=1;i= ----- ")
@@ -24,7 +29,7 @@ a = 0
 # P_ist_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 # P_soll_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
-
+# hack = clientOME.get_node("ns=1;i= ----- ")
 
 
 #------------- QT ---------------------
@@ -62,6 +67,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.sli_Psoll_Wr2.valueChanged.connect(self.update_Slider_Psoll_Wr2)
         self.sli_Psoll_Wr3.valueChanged.connect(self.update_Slider_Psoll_Wr3)
 
+        self.sli_P_Stadt.valueChanged.connect(self.update_Slider_Stadt)
+
+        self.btn_Reset.clicked.connect(self.reset)
+        self.btn_Hack.clicked.connect(self.hack)
+
+        self.btn_AnAus.clicked.connect(self.anaus)
+        self.btn_Wind.clicked.connect(self.change_Wind)
 
     def change_Home(self):
         self.stackedWidget.setCurrentIndex(1)
@@ -122,6 +134,57 @@ class MainWindow(QtWidgets.QMainWindow):
     def update_Slider_Psoll_Wr3(self):
         Psoll_Wr3_hack = self.sli_Psoll_Wr3.value()
         self.num_Psoll_Wr3.setText(str(Psoll_Wr3_hack))
+
+    def update_Slider_Stadt(self):
+        P_Stadt = self.sli_P_Stadt.value()
+        self.num_P_Stadt.setText(str(P_Stadt))
+        #P_Verbrauch.setValue(float(P_Stadt))
+
+    def reset(self):
+        self.sli_Pist_Wr1.setValue(0)
+        self.sli_Pist_Wr2.setValue(0)
+        self.sli_Pist_Wr3.setValue(0)
+        self.sli_Psoll_Wr1.setValue(0)
+        self.sli_Psoll_Wr2.setValue(0)
+        self.sli_Psoll_Wr3.setValue(0)
+
+        # hack.set_value(float(10))
+
+        time.sleep(5)
+
+    def hack(self):
+        P_ist_Wr1_hack.set_value(float(P_ist_Wr1 + self.sli_Pist_Wr1.value() ))
+        P_ist_Wr2_hack.set_value(float(P_ist_Wr2 + self.sli_Pist_Wr2.value() ))
+        P_ist_Wr3_hack.set_value(float(P_ist_Wr3 + self.sli_Pist_Wr3.value() ))
+        P_soll_Wr1_hack.set_value(float(P_soll_Wr1 + self.sli_Psoll_Wr1.value() ))
+        P_soll_Wr2_hack.set_value(float(P_soll_Wr2 + self.sli_Psoll_Wr2.value() ))
+        P_soll_Wr3_hack.set_value(float(P_soll_Wr3 + self.sli_Psoll_Wr1.value() ))
+
+    def anaus(self):
+        global AnAus
+        if AnAus:
+            self.btn_AnAus.setText("Anomalieerkennung\nAUS")
+            self.btn_AnAus.setStyleSheet("background-color: rgb(255, 153, 153);")
+            AnAus = False
+        else:
+            self.btn_AnAus.setText("Anomalieerkennung\nAN")
+            self.btn_AnAus.setStyleSheet("background-color: rgb(189, 255, 170);")
+            AnAus = True
+
+    def change_Wind(self):
+        global custom_Wind
+        if custom_Wind:
+            self.btn_Wind.setText("Winddaten\nAutomatisch")
+            custom_Wind = False
+        else:
+            self.btn_Wind.setText("Winddaten\nManuell")
+            custom_Wind = True
+
+    def send_serial(self):
+        #global n_Wr1, n_Wr2, n_Wr3, Pist_gesamt, P_Stadt
+        #arduino_write.write(str(n_Wr1)+":"+str(n_Wr2)+":"+str(n_Wr3)+":"+str(Pist_gesamt)+":"+str(P_Stadt)+"\n").encode("utf8")
+        #Wind = int(arduino_read.read())
+
 
     def update_plot_data(self):
         global pen

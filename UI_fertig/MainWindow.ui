@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="PlotWidget" name="graphWidget" native="true">
@@ -323,6 +323,9 @@ AN/AUS</string>
         <height>121</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>Wind
 AUTO/MANUELL</string>
@@ -402,7 +405,7 @@ AUTO/MANUELL</string>
        <string>Reset</string>
       </property>
      </widget>
-     <widget class="QSlider" name="sli_Pist_Wr3_2">
+     <widget class="QSlider" name="sli_P_Stadt">
       <property name="geometry">
        <rect>
         <x>840</x>
@@ -431,7 +434,7 @@ AUTO/MANUELL</string>
        <string>Energieverbrauch</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr3_2">
+     <widget class="QLabel" name="num_P_Stadt">
       <property name="geometry">
        <rect>
         <x>870</x>
