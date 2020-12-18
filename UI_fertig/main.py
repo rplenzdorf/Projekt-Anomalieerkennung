@@ -6,6 +6,7 @@ import serial
 import pyqtgraph as pg
 from pyqtgraph import PlotWidget, plot
 from random import randint
+from numpy import genfromtxt
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QWidget, QSizePolicy, QVBoxLayout, QSlider, QCheckBox
 from PyQt5.QtCore import Qt
@@ -17,9 +18,13 @@ custom_Wind = True
 pen = pg.mkPen(color=(255, 255, 255))
 a = 0
 
+#--------------- Winddaten aus csv -----------------------
+winddata = genfromtxt('Winddata.csv', delimiter=',')
+wind_speed = winddata[:,1]
+
 #--------------- Setup Serial -----------------------
-# arduno_write = serial.Serial("")
- # arduno_read = serial.Serial("")
+# arduino_write = serial.Serial("")
+# arduino_read = serial.Serial("")
 
 #-------------- Definition der Variablen mit OPC UA ----------------
 # P_ist_Wr1 = clientOME.get_node("ns=1;i= ----- ")
@@ -52,6 +57,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.serial_timer = QtCore.QTimer()
         self.serial_timer.setInterval(100)
         self.serial_timer.timeout.connect(self.send_serial)
+        self.serial_timer.start()
+
+        self.sim_timer = QtCore.QTimer()
+        self.sim_timer.setInterval(100)
+        self.sim_timer.timeout.connect(self.send_sim)
         self.serial_timer.start()
 
         self.btn_Home.clicked.connect(self.change_Home)
