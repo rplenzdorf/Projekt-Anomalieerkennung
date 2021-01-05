@@ -231,6 +231,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.y.append(y_neu)  # Add a new random value.
 
         self.data_line.setData(self.x, self.y, pen=pen)  # Update the data.
+    
+    def send_sim(self):
+        
 
 
 # Übergabe an Arduino: Trennung: :, Ende: \n, Reihenfolge: Wr1, Wr2, Wr3, P_soll_gesamt, P_ist_gesamt 
