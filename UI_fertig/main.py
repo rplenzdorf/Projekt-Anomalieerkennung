@@ -17,6 +17,7 @@ AnAus = True
 custom_Wind = True
 pen = pg.mkPen(color=(255, 255, 255))
 a = 0
+Anomalie = False
 
 #--------------- Winddaten aus csv -----------------------
 winddata = genfromtxt('Winddata.csv', delimiter=',')
@@ -34,9 +35,21 @@ wind_speed = winddata[:,1]
 # P_ist_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 # P_soll_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
+P_max_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+P_max_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+P_max_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+
+beta_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+beta_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+beta_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+
 # hack = clientOME.get_node("ns=1;i= ----- ")
 
+# P_ges = clientOME.get_node("ns=1;i=150001523")
 
+# P_Stadt = clientOME.get_node("ns=1;i=100000189")
+
+# Wind = clientOME.get_node("ns=1;i=100000190")
 #------------- QT ---------------------
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*args,**kwargs):
@@ -191,6 +204,7 @@ class MainWindow(QtWidgets.QMainWindow):
             custom_Wind = True
 
     def send_serial(self):
+        pass
         #global n_Wr1, n_Wr2, n_Wr3, Pist_gesamt, P_Stadt
         #arduino_write.write(str(n_Wr1)+":"+str(n_Wr2)+":"+str(n_Wr3)+":"+str(Pist_gesamt)+":"+str(P_Stadt)+"\n").encode("utf8")
         #Wind = int(arduino_read.read())
@@ -231,12 +245,37 @@ class MainWindow(QtWidgets.QMainWindow):
         self.y.append(y_neu)  # Add a new random value.
 
         self.data_line.setData(self.x, self.y, pen=pen)  # Update the data.
-    
+
     def send_sim(self):
-        
+        global Anomalie
 
+        if custom_Wind:
+            pass
+            #wind = ser.read(...)
+        else:
+            index_Wind = 0
+            while True:
+                wind = wind_speed[index_Wind]
+                index_Wind += 1
+                if index_Wind == 86399:
+                    index_Wind = 0
 
-# Übergabe an Arduino: Trennung: :, Ende: \n, Reihenfolge: Wr1, Wr2, Wr3, P_soll_gesamt, P_ist_gesamt 
+        if P_Stadt > P_ist:
+            self.sym_Unzureichend.setHidden(False)
+        else:
+            self.sym_Unzureichend.set.setHidden(True)
+
+        if P_Stadt > P_ist:
+            self.sym_Ueberlastet.setHidden(False)
+        else:
+            self.sym_Uerberlastet.setHidden(True)
+
+        if Anmomalie:
+            self.sym_Erkannt.setHidden(False)
+        else:
+            self.sym_Erkannt.set.setHidden(True)
+        #übergabe
+
 
 
 if __name__ == "__main__":
