@@ -18,6 +18,7 @@ custom_Wind = True
 pen = pg.mkPen(color=(255, 255, 255))
 a = 0
 Anomalie = False
+wind_gain = 8
 
 #--------------- Winddaten aus csv -----------------------
 winddata = genfromtxt('Winddata.csv', delimiter=',')
@@ -47,7 +48,7 @@ wind_speed = winddata[:,1]
 
 # P_ges = clientOME.get_node("ns=1;i=150001523")
 
-# P_Stadt = clientOME.get_node("ns=1;i=100000189")
+# P_soll = clientOME.get_node("ns=1;i=100000189")
 
 # Wind = clientOME.get_node("ns=1;i=100000190")
 
@@ -139,31 +140,31 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def update_Slider_Pist_Wr1(self):
         Pist_Wr1_hack = self.sli_Pist_Wr1.value()
-        self.num_Pist_Wr1.setText(str(Pist_Wr1_hack))
+        self.num_sli_Pist_Wr1.setText(str(Pist_Wr1_hack))
         
     def update_Slider_Pist_Wr2(self):
         Pist_Wr2_hack = self.sli_Pist_Wr2.value()
-        self.num_Pist_Wr2.setText(str(Pist_Wr2_hack))
+        self.num_sli_Pist_Wr2.setText(str(Pist_Wr2_hack))
 
     def update_Slider_Pist_Wr3(self):
         Pist_Wr3_hack = self.sli_Pist_Wr3.value()
-        self.num_Pist_Wr3.setText(str(Pist_Wr3_hack))
+        self.num_sli_Pist_Wr3.setText(str(Pist_Wr3_hack))
 
     def update_Slider_Psoll_Wr1(self):
         Psoll_Wr1_hack = self.sli_Psoll_Wr1.value()
-        self.num_Psoll_Wr1.setText(str(Psoll_Wr1_hack))
+        self.num_sli_Psoll_Wr1.setText(str(Psoll_Wr1_hack))
         
     def update_Slider_Psoll_Wr2(self):
         Psoll_Wr2_hack = self.sli_Psoll_Wr2.value()
-        self.num_Psoll_Wr2.setText(str(Psoll_Wr2_hack))
+        self.num_sli_Psoll_Wr2.setText(str(Psoll_Wr2_hack))
 
     def update_Slider_Psoll_Wr3(self):
         Psoll_Wr3_hack = self.sli_Psoll_Wr3.value()
-        self.num_Psoll_Wr3.setText(str(Psoll_Wr3_hack))
+        self.num_sli_Psoll_Wr3.setText(str(Psoll_Wr3_hack))
 
     def update_Slider_Stadt(self):
         P_Stadt = self.sli_P_Stadt.value()
-        self.num_P_Stadt.setText(str(P_Stadt))
+        self.num_sli_P_soll.setText(str(P_Stadt))
         #P_Verbrauch.setValue(float(P_Stadt))
 
     def reset(self):
@@ -237,38 +238,38 @@ class MainWindow(QtWidgets.QMainWindow):
 
         if self.check_Pges.isChecked():
             pen = pg.mkPen(color=(255, 0, 0))
-            self.check_Green.setChecked(False)      
-            self.check_Blue.setChecked(False)
-            self.check_Blue.setChecked(False)
+            self.check_Psoll.setChecked(False)      
+            self.check_wind.setChecked(False)
+            self.check_beta.setChecked(False)
             y_neu = 1
 
         elif self.check_Psoll.isChecked():
             pen = pg.mkPen(color=(0, 255, 0))
-            self.check_Red.setChecked(False)
-            self.check_Blue.setChecked(False)
-            self.check_Blue.setChecked(False)
+            self.check_Pges.setChecked(False)
+            self.check_wind.setChecked(False)
+            self.check_beta.setChecked(False)
             y_neu = 2
 
         elif self.check_wind.isChecked():
             pen = pg.mkPen(color=(0, 0, 255))
-            self.check_Green.setChecked(False)
-            self.check_Red.setChecked(False)
-            self.check_Blue.setChecked(False)
+            self.check_Pges.setChecked(False)
+            self.check_Psoll.setChecked(False)
+            self.check_beta.setChecked(False)
             y_neu = 3
 
         elif self.check_beta.isChecked():
             pen = pg.mkPen(color=(0, 0, 255))
-            self.check_Green.setChecked(False)
-            self.check_Red.setChecked(False)
-            self.check_Blue.setChecked(False)
+            self.check_Pges.setChecked(False)
+            self.check_Psoll.setChecked(False)
+            self.check_wind.setChecked(False)
             y_neu = 3
 
         else:    
             pen = pg.mkPen(color=(0, 0, 0))
-            self.check_Green.setChecked(False)
-            self.check_Blue.setChecked(False)
-            self.check_Red.setChecked(False)
-            self.check_Blue.setChecked(False)
+            self.check_Pges.setChecked(False)
+            self.check_Psoll.setChecked(False)
+            self.check_wind.setChecked(False)
+            self.check_beta.setChecked(False)
             y_neu = 0
 
         self.x = self.x[1:]  # Remove the first y element.
@@ -280,7 +281,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.data_line.setData(self.x, self.y, pen=pen)  # Update the data.
 
     def send_sim(self):
-        global Anomalie
+        global Anomalie, wind_gain
 
         if custom_Wind:
             pass
@@ -288,7 +289,7 @@ class MainWindow(QtWidgets.QMainWindow):
         else:
             index_Wind = 0
             while True:
-                wind = wind_speed[index_Wind]
+                wind = wind_speed[index_Wind] * wind_gain
                 index_Wind += 1
                 if index_Wind == 86399:
                     index_Wind = 0
@@ -309,6 +310,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.sym_Erkannt.set.setHidden(True)
         #übergabe
 
+    def check_anomalie(self):
+        pass
 
 
 if __name__ == "__main__":
