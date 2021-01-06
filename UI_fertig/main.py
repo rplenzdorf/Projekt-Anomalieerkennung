@@ -35,13 +35,13 @@ wind_speed = winddata[:,1]
 # P_ist_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 # P_soll_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
-P_max_Wr1 = clientOME.get_node("ns=1;i= ----- ")
-P_max_Wr2 = clientOME.get_node("ns=1;i= ----- ")
-P_max_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# P_max_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+# P_max_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+# P_max_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
-beta_Wr1 = clientOME.get_node("ns=1;i= ----- ")
-beta_Wr2 = clientOME.get_node("ns=1;i= ----- ")
-beta_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# beta_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+# beta_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+# beta_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
 # hack = clientOME.get_node("ns=1;i= ----- ")
 
@@ -50,6 +50,8 @@ beta_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 # P_Stadt = clientOME.get_node("ns=1;i=100000189")
 
 # Wind = clientOME.get_node("ns=1;i=100000190")
+
+
 #------------- QT ---------------------
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*args,**kwargs):
@@ -65,6 +67,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.plot_timer = QtCore.QTimer()
         self.plot_timer.setInterval(50)
         self.plot_timer.timeout.connect(self.update_plot_data)
+        self.plot_timer.timeout.connect(self.update_numbers)
         self.plot_timer.start()
 
         self.serial_timer = QtCore.QTimer()
@@ -209,26 +212,55 @@ class MainWindow(QtWidgets.QMainWindow):
         #arduino_write.write(str(n_Wr1)+":"+str(n_Wr2)+":"+str(n_Wr3)+":"+str(Pist_gesamt)+":"+str(P_Stadt)+"\n").encode("utf8")
         #Wind = int(arduino_read.read())
 
+    def update_numbers(self):
+        self.num_P_ges.setText(str(P_ges))
+        self.num_P_soll.setText(str(P_soll))
+        self.num_P_imp.setText(str(P_imp))
+
+        self.num_Pist_Wr1.setText(str(P_ist_Wr1))
+        self.num_Psoll_Wr1.setText(str(P_soll_Wr1))
+        self.num_beta_Wr1.setText(str(beta_Wr1))
+        self.num_lambda_Wr1.setText(str(lambda_Wr1))
+
+        self.num_Pist_Wr2.setText(str(P_ist_Wr2))
+        self.num_Psoll_Wr2.setText(str(P_soll_Wr2))
+        self.num_beta_Wr2.setText(str(beta_Wr2))
+        self.num_lambda_Wr2.setText(str(lambda_Wr2))
+
+        self.num_Pist_Wr3.setText(str(P_ist_Wr3))
+        self.num_Psoll_Wr3.setText(str(P_soll_Wr3))
+        self.num_beta_Wr3.setText(str(beta_Wr3))
+        self.num_lambda_Wr3.setText(str(lambda_Wr3))
 
     def update_plot_data(self):
         global pen
 
-        if self.check_Red.isChecked():
+        if self.check_Pges.isChecked():
             pen = pg.mkPen(color=(255, 0, 0))
             self.check_Green.setChecked(False)      
             self.check_Blue.setChecked(False)
+            self.check_Blue.setChecked(False)
             y_neu = 1
 
-        elif self.check_Green.isChecked():
+        elif self.check_Psoll.isChecked():
             pen = pg.mkPen(color=(0, 255, 0))
             self.check_Red.setChecked(False)
             self.check_Blue.setChecked(False)
+            self.check_Blue.setChecked(False)
             y_neu = 2
 
-        elif self.check_Blue.isChecked():
+        elif self.check_wind.isChecked():
             pen = pg.mkPen(color=(0, 0, 255))
             self.check_Green.setChecked(False)
             self.check_Red.setChecked(False)
+            self.check_Blue.setChecked(False)
+            y_neu = 3
+
+        elif self.check_beta.isChecked():
+            pen = pg.mkPen(color=(0, 0, 255))
+            self.check_Green.setChecked(False)
+            self.check_Red.setChecked(False)
+            self.check_Blue.setChecked(False)
             y_neu = 3
 
         else:    
@@ -236,6 +268,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.check_Green.setChecked(False)
             self.check_Blue.setChecked(False)
             self.check_Red.setChecked(False)
+            self.check_Blue.setChecked(False)
             y_neu = 0
 
         self.x = self.x[1:]  # Remove the first y element.

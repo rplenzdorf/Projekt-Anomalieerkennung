@@ -246,6 +246,9 @@ font: 14pt &quot;Arial&quot;;</string>
         <height>121</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
       <property name="text">
        <string>Anomalieerkennung
 AN/AUS</string>
@@ -261,7 +264,7 @@ AN/AUS</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">font: 14pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
        <string>Wind
@@ -325,8 +328,11 @@ AUTO/MANUELL</string>
         <height>121</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Arial&quot;;</string>
+      </property>
       <property name="text">
-       <string>Daten Überschreibern</string>
+       <string>Hacken</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_Reset">
@@ -337,6 +343,9 @@ AUTO/MANUELL</string>
         <width>201</width>
         <height>121</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
        <string>Reset</string>
@@ -378,6 +387,54 @@ AUTO/MANUELL</string>
         <y>370</y>
         <width>61</width>
         <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_26">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>190</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_27">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>230</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_28">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>270</y>
+        <width>61</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -598,27 +655,107 @@ AUTO/MANUELL</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_20">
+     <widget class="QLabel" name="num_Pist_Wr1_25">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>340</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_35">
       <property name="geometry">
        <rect>
         <x>30</x>
+        <y>200</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_23">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>260</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_20">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
         <y>180</y>
-        <width>111</width>
-        <height>31</height>
+        <width>61</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_22">
+     <widget class="QLabel" name="num_Pist_Wr1_18">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_21">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_37">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>100</y>
+        <y>120</y>
         <width>111</width>
         <height>31</height>
        </rect>
@@ -630,23 +767,7 @@ AUTO/MANUELL</string>
        <string>Wert</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_26">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>270</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Wert</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_27">
+     <widget class="QLabel" name="label_38">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -662,23 +783,7 @@ AUTO/MANUELL</string>
        <string>Wert</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_2">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>250</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_3">
+     <widget class="QLabel" name="num_Pist_Wr1_22">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -694,43 +799,27 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_4">
+     <widget class="QLabel" name="label_36">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>80</y>
-        <width>61</width>
-        <height>71</height>
+        <x>30</x>
+        <y>280</y>
+        <width>111</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>0.0</string>
+       <string>Wert</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_5">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>160</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_6">
+     <widget class="QLabel" name="num_Pist_Wr1_19">
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>340</y>
+        <y>260</y>
         <width>61</width>
         <height>71</height>
        </rect>
@@ -742,43 +831,11 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_7">
+     <widget class="QLabel" name="num_Pist_Wr1_24">
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>250</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_8">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>70</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_9">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>160</y>
+        <y>180</y>
         <width>61</width>
         <height>71</height>
        </rect>
@@ -998,17 +1055,196 @@ AUTO/MANUELL</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="num_Pist_Wr1_10">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>220</y>
-        <width>55</width>
-        <height>16</height>
+        <x>440</x>
+        <y>340</y>
+        <width>61</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
       <property name="text">
-       <string>WR2</string>
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_11">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>260</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_12">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_13">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>260</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_14">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>180</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_15">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_16">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>280</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_17">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>340</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>200</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
       </property>
      </widget>
     </widget>
@@ -1219,17 +1455,196 @@ AUTO/MANUELL</string>
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="num_Pist_Wr1_36">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>230</y>
-        <width>55</width>
-        <height>16</height>
+        <x>440</x>
+        <y>340</y>
+        <width>61</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
       <property name="text">
-       <string>WR3</string>
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_33">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>340</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_31">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>180</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_35">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_39">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>200</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_42">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_30">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>260</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_40">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>280</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_32">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_29">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_41">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="num_Pist_Wr1_34">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>260</y>
+        <width>61</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
       </property>
      </widget>
     </widget>
