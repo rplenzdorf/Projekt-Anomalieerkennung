@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="PlotWidget" name="graphWidget" native="true">
@@ -37,12 +37,12 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="check_Red">
+     <widget class="QCheckBox" name="check_Pges">
       <property name="geometry">
        <rect>
-        <x>790</x>
+        <x>760</x>
         <y>40</y>
-        <width>181</width>
+        <width>201</width>
         <height>71</height>
        </rect>
       </property>
@@ -57,7 +57,7 @@
 font: 14pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Rot</string>
+       <string>Gesamtleistung</string>
       </property>
       <property name="iconSize">
        <size>
@@ -66,10 +66,10 @@ font: 14pt &quot;Arial&quot;;</string>
        </size>
       </property>
      </widget>
-     <widget class="QCheckBox" name="check_Green">
+     <widget class="QCheckBox" name="check_Psoll">
       <property name="geometry">
        <rect>
-        <x>790</x>
+        <x>760</x>
         <y>120</y>
         <width>181</width>
         <height>71</height>
@@ -86,7 +86,7 @@ font: 14pt &quot;Arial&quot;;</string>
 font: 14pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Grün</string>
+       <string>Soll-Leistung</string>
       </property>
       <property name="iconSize">
        <size>
@@ -95,12 +95,12 @@ font: 14pt &quot;Arial&quot;;</string>
        </size>
       </property>
      </widget>
-     <widget class="QCheckBox" name="check_Blue">
+     <widget class="QCheckBox" name="check_wind">
       <property name="geometry">
        <rect>
-        <x>790</x>
+        <x>760</x>
         <y>200</y>
-        <width>181</width>
+        <width>251</width>
         <height>71</height>
        </rect>
       </property>
@@ -115,7 +115,36 @@ font: 14pt &quot;Arial&quot;;</string>
 font: 14pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Blau</string>
+       <string>Windgeschwindigkeit</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_beta">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>280</y>
+        <width>251</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox::indicator{width:30px;height:30px};
+font: 14pt &quot;Arial&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Anstellwinkel</string>
       </property>
       <property name="iconSize">
        <size>
@@ -396,7 +425,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_26">
+     <widget class="QLabel" name="num_Pges">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -412,7 +441,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_27">
+     <widget class="QLabel" name="num_Pstadt">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -428,7 +457,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_28">
+     <widget class="QLabel" name="num_Pimp">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -488,7 +517,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Ist</string>
+       <string>Soll</string>
       </property>
      </widget>
      <widget class="QFrame" name="frame_2">
@@ -538,7 +567,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Pist_Wr1">
+      <widget class="QLabel" name="num_sli_Pist_Wr1">
        <property name="geometry">
         <rect>
          <x>60</x>
@@ -583,7 +612,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Psoll_Wr1">
+      <widget class="QLabel" name="num_sli_Psoll_Wr1">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -613,7 +642,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Soll</string>
+       <string>Ist</string>
       </property>
      </widget>
      <widget class="Line" name="line_6">
@@ -655,28 +684,12 @@ AUTO/MANUELL</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_25">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>340</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_35">
       <property name="geometry">
        <rect>
         <x>30</x>
         <y>200</y>
-        <width>111</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
@@ -684,10 +697,10 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>max. Leistung</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_23">
+     <widget class="QLabel" name="num_beta_Wr1">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -703,7 +716,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_20">
+     <widget class="QLabel" name="num_max_Wr1">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -719,7 +732,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_18">
+     <widget class="QLabel" name="num_Pist_Wr1">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -735,7 +748,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_21">
+     <widget class="QLabel" name="num_Psoll_Wr1">
       <property name="geometry">
        <rect>
         <x>440</x>
@@ -764,7 +777,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Leistung</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_38">
@@ -780,10 +793,10 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Lambda</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_22">
+     <widget class="QLabel" name="num_lambda_Wr1">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -812,39 +825,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_19">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>260</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_24">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>180</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
+       <string>Anstellwinkel</string>
       </property>
      </widget>
     </widget>
@@ -891,7 +872,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Ist</string>
+       <string>Soll</string>
       </property>
      </widget>
      <widget class="QFrame" name="frame_3">
@@ -938,7 +919,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Pist_Wr2">
+      <widget class="QLabel" name="num_sli_Pist_Wr2">
        <property name="geometry">
         <rect>
          <x>60</x>
@@ -983,7 +964,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Psoll_Wr2">
+      <widget class="QLabel" name="num_sli_Psoll_Wr2">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1013,7 +994,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Soll</string>
+       <string>Ist</string>
       </property>
      </widget>
      <widget class="Line" name="line_10">
@@ -1055,39 +1036,7 @@ AUTO/MANUELL</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_10">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>340</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_11">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>260</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_12">
+     <widget class="QLabel" name="num_Pist_Wr2">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1103,7 +1052,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_13">
+     <widget class="QLabel" name="num_beta_Wr2">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1119,7 +1068,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_14">
+     <widget class="QLabel" name="num_Pmax_Wr2">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1135,29 +1084,13 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_15">
+     <widget class="QLabel" name="num_Psoll_Wr2">
       <property name="geometry">
        <rect>
         <x>440</x>
         <y>120</y>
         <width>61</width>
         <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_16">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>180</y>
-        <width>61</width>
-        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1180,7 +1113,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Anstellwinkel</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_29">
@@ -1196,10 +1129,10 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Lambda</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_17">
+     <widget class="QLabel" name="num_lambda_Wr2">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1220,7 +1153,7 @@ AUTO/MANUELL</string>
        <rect>
         <x>30</x>
         <y>200</y>
-        <width>111</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
@@ -1228,7 +1161,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>max. Leistung</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_33">
@@ -1244,7 +1177,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Leistung</string>
       </property>
      </widget>
     </widget>
@@ -1304,7 +1237,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Ist</string>
+       <string>Soll</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_15">
@@ -1320,7 +1253,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Soll</string>
+       <string>Ist</string>
       </property>
      </widget>
      <widget class="Line" name="line_2">
@@ -1380,7 +1313,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Pist_Wr3">
+      <widget class="QLabel" name="num_sli_Pist_Wr3">
        <property name="geometry">
         <rect>
          <x>60</x>
@@ -1425,7 +1358,7 @@ AUTO/MANUELL</string>
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="num_Psoll_Wr3">
+      <widget class="QLabel" name="num_sli_Psoll_Wr3">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1455,23 +1388,7 @@ AUTO/MANUELL</string>
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_36">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>340</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_33">
+     <widget class="QLabel" name="num_lamda_Wr3">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1487,26 +1404,10 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_31">
+     <widget class="QLabel" name="num_Pmax_Wr3">
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>180</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_35">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
         <y>180</y>
         <width>61</width>
         <height>71</height>
@@ -1524,7 +1425,7 @@ AUTO/MANUELL</string>
        <rect>
         <x>30</x>
         <y>200</y>
-        <width>111</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
@@ -1532,7 +1433,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>max. Leistung</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_42">
@@ -1548,23 +1449,7 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_30">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>260</y>
-        <width>61</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 18pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string>0.0</string>
+       <string>Lambda</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_40">
@@ -1580,10 +1465,10 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Anstellwinkel</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_32">
+     <widget class="QLabel" name="num_Psoll_Wr3">
       <property name="geometry">
        <rect>
         <x>440</x>
@@ -1599,7 +1484,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_29">
+     <widget class="QLabel" name="num_Pist_Wr3">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1628,10 +1513,10 @@ AUTO/MANUELL</string>
        <string notr="true">font: 12pt &quot;Arial&quot;;</string>
       </property>
       <property name="text">
-       <string>Wert</string>
+       <string>Leistung</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pist_Wr1_34">
+     <widget class="QLabel" name="num_beta_Wr3">
       <property name="geometry">
        <rect>
         <x>240</x>
