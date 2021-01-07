@@ -19,6 +19,8 @@ pen = pg.mkPen(color=(255, 255, 255))
 a = 0
 Anomalie = False
 wind_gain = 8
+wind = 1
+index_Wind = 1
 
 #--------------- Winddaten aus csv -----------------------
 winddata = genfromtxt('Winddata.csv', delimiter=',')
@@ -66,20 +68,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.data_line =  self.graphWidget.plot(self.x, self.y, pen=pen)
 
         self.plot_timer = QtCore.QTimer()
-        self.plot_timer.setInterval(50)
+        self.plot_timer.setInterval(100)
         self.plot_timer.timeout.connect(self.update_plot_data)
-        self.plot_timer.timeout.connect(self.update_numbers)
+        self.plot_timer.timeout.connect(self.send_sim)
         self.plot_timer.start()
 
-        self.serial_timer = QtCore.QTimer()
-        self.serial_timer.setInterval(100)
-        self.serial_timer.timeout.connect(self.send_serial)
-        self.serial_timer.start()
-
-        self.sim_timer = QtCore.QTimer()
-        self.sim_timer.setInterval(100)
-        self.sim_timer.timeout.connect(self.send_sim)
-        self.serial_timer.start()
 
         self.btn_Home.clicked.connect(self.change_Home)
         self.btn_Wr1.clicked.connect(self.change_Wr1)
@@ -164,8 +157,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def update_Slider_Stadt(self):
         P_Stadt = self.sli_P_Stadt.value()
-        self.num_sli_P_soll.setText(str(P_Stadt))
-        #P_Verbrauch.setValue(float(P_Stadt))
+        self.num_sli_P_Stadt.setText(str(P_Stadt))
+        #P_Verbrauch.setValue(float(P_ges))
 
     def reset(self):
         self.sli_Pist_Wr1.setValue(0)
@@ -209,33 +202,33 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def send_serial(self):
         pass
-        #global n_Wr1, n_Wr2, n_Wr3, Pist_gesamt, P_Stadt
-        #arduino_write.write(str(n_Wr1)+":"+str(n_Wr2)+":"+str(n_Wr3)+":"+str(Pist_gesamt)+":"+str(P_Stadt)+"\n").encode("utf8")
+        #global n_Wr1, n_Wr2, n_Wr3, Pist_gesamt, P_ges
+        #arduino_write.write(str(n_Wr1)+":"+str(n_Wr2)+":"+str(n_Wr3)+":"+str(Pist_gesamt)+":"+str(P_ges)+"\n").encode("utf8")
         #Wind = int(arduino_read.read())
 
     def update_numbers(self):
-        self.num_P_ges.setText(str(P_ges))
-        self.num_P_soll.setText(str(P_soll))
-        self.num_P_imp.setText(str(P_imp))
+        pass
+        #self.num_P_ges.setText(str(P_ges))
+        #self.num_P_Stadt.setText(str(P_Stadt))
+        #self.num_P_imp.setText(str(P_imp))
 
-        self.num_Pist_Wr1.setText(str(P_ist_Wr1))
-        self.num_Psoll_Wr1.setText(str(P_soll_Wr1))
-        self.num_beta_Wr1.setText(str(beta_Wr1))
-        self.num_lambda_Wr1.setText(str(lambda_Wr1))
+        # self.num_Pist_Wr1.setText(str(P_ist_Wr1))
+        # self.num_Psoll_Wr1.setText(str(P_soll_Wr1))
+        # self.num_beta_Wr1.setText(str(beta_Wr1))
+        # self.num_lambda_Wr1.setText(str(lambda_Wr1))
 
-        self.num_Pist_Wr2.setText(str(P_ist_Wr2))
-        self.num_Psoll_Wr2.setText(str(P_soll_Wr2))
-        self.num_beta_Wr2.setText(str(beta_Wr2))
-        self.num_lambda_Wr2.setText(str(lambda_Wr2))
+        # self.num_Pist_Wr2.setText(str(P_ist_Wr2))
+        # self.num_Psoll_Wr2.setText(str(P_soll_Wr2))
+        # self.num_beta_Wr2.setText(str(beta_Wr2))
+        # self.num_lambda_Wr2.setText(str(lambda_Wr2))
 
-        self.num_Pist_Wr3.setText(str(P_ist_Wr3))
-        self.num_Psoll_Wr3.setText(str(P_soll_Wr3))
-        self.num_beta_Wr3.setText(str(beta_Wr3))
-        self.num_lambda_Wr3.setText(str(lambda_Wr3))
+        # self.num_Pist_Wr3.setText(str(P_ist_Wr3))
+        # self.num_Psoll_Wr3.setText(str(P_soll_Wr3))
+        # self.num_beta_Wr3.setText(str(beta_Wr3))
+        # self.num_lambda_Wr3.setText(str(lambda_Wr3))
 
     def update_plot_data(self):
         global pen
-
         if self.check_Pges.isChecked():
             pen = pg.mkPen(color=(255, 0, 0))
             self.check_Psoll.setChecked(False)      
@@ -255,7 +248,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.check_Pges.setChecked(False)
             self.check_Psoll.setChecked(False)
             self.check_beta.setChecked(False)
-            y_neu = 3
+            y_neu = wind
 
         elif self.check_beta.isChecked():
             pen = pg.mkPen(color=(0, 0, 255))
@@ -281,33 +274,35 @@ class MainWindow(QtWidgets.QMainWindow):
         self.data_line.setData(self.x, self.y, pen=pen)  # Update the data.
 
     def send_sim(self):
-        global Anomalie, wind_gain
+        global Anomalie, wind_gain, index_Wind, wind
+
+        print("tick")
 
         if custom_Wind:
             pass
             #wind = ser.read(...)
         else:
-            index_Wind = 0
-            while True:
-                wind = wind_speed[index_Wind] * wind_gain
-                index_Wind += 1
-                if index_Wind == 86399:
-                    index_Wind = 0
+            wind = wind_speed[index_Wind] * wind_gain
+            print(wind)
+            index_Wind += 1
+            if index_Wind == 86399:
+                index_Wind = 0
 
-        if P_Stadt > P_ist:
-            self.sym_Unzureichend.setHidden(False)
-        else:
-            self.sym_Unzureichend.set.setHidden(True)
 
-        if P_Stadt > P_ist:
-            self.sym_Ueberlastet.setHidden(False)
-        else:
-            self.sym_Uerberlastet.setHidden(True)
+        # if P_ges > P_ist:
+        #     self.sym_Unzureichend.setHidden(False)
+        # else:
+        #     self.sym_Unzureichend.set.setHidden(True)
 
-        if Anmomalie:
-            self.sym_Erkannt.setHidden(False)
-        else:
-            self.sym_Erkannt.set.setHidden(True)
+        # if P_ges > P_ist:
+        #     self.sym_Ueberlastet.setHidden(False)
+        # else:
+        #     self.sym_Uerberlastet.setHidden(True)
+
+        # if Anmomalie:
+        #     self.sym_Erkannt.setHidden(False)
+        # else:
+        #     self.sym_Erkannt.set.setHidden(True)
         #übergabe
 
     def check_anomalie(self):
@@ -315,7 +310,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    
     app = QtWidgets.QApplication(sys.argv)
 
     w = MainWindow()

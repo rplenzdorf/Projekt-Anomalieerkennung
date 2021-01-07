@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="PlotWidget" name="graphWidget" native="true">
@@ -409,7 +409,7 @@ AUTO/MANUELL</string>
        <string>Energieverbrauch</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_P_Stadt">
+     <widget class="QLabel" name="num_P_Stadt_2">
       <property name="geometry">
        <rect>
         <x>870</x>
@@ -425,7 +425,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pges">
+     <widget class="QLabel" name="num_P_ges_2">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -441,7 +441,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pstadt">
+     <widget class="QLabel" name="num_P_Stadt">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -457,7 +457,7 @@ AUTO/MANUELL</string>
        <string>0.0</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num_Pimp">
+     <widget class="QLabel" name="num_P_imp">
       <property name="geometry">
        <rect>
         <x>560</x>
