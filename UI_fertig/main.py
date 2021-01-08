@@ -30,21 +30,40 @@ wind_speed = winddata[:,1]
 # arduino_write = serial.Serial("")
 # arduino_read = serial.Serial("")
 
+#-------------- Setup OPCUA Client --------------------
+sim_place = input("Wo soll die Simulation laufen?\n(1) Raspberry Pi\n(2) Server")
+if sim_place == 1:
+    urlOME = "opc.tcp://localhost:4841"
+elif sim_place == 2:
+    pass
+    #urlOME = "opc.tcp://IP:4841" ====IP einfügen====
+
+clientOME = Client(urlOME)
+clientOME.connect()
+print("OME Client connected")
+
+if sim_place == 1:
+    pass
+    #subprocess.Popen('cmd /k "cd ../ & cd ./Modelica/BouncingBallFull_RPi & BouncingBallFull_RPI.exe -embeddedServer=opc-ua -rt=1"')
+    #Richtigen Pfad einfügen
+    run = clientOME.get_node("ns=1;i= ----- ")
+    run.set_value(float(1))
 #-------------- Definition der Variablen mit OPC UA ----------------
-# P_ist_Wr1 = clientOME.get_node("ns=1;i= ----- ")
+
+# P_ist_Wr1 = clientOME.get_node("ns=1;i=100000767")
 # P_soll_Wr1 = clientOME.get_node("ns=1;i= ----- ")
-# P_ist_Wr2 = clientOME.get_node("ns=1;i= ----- ")
+# P_ist_Wr2 = clientOME.get_node("ns=1;i=100001443")
 # P_soll_Wr2 = clientOME.get_node("ns=1;i= ----- ")
-# P_ist_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# P_ist_Wr3 = clientOME.get_node("ns=1;i=100002119")
 # P_soll_Wr3 = clientOME.get_node("ns=1;i= ----- ")
 
-# P_max_Wr1 = clientOME.get_node("ns=1;i= ----- ")
-# P_max_Wr2 = clientOME.get_node("ns=1;i= ----- ")
-# P_max_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# P_max_Wr1 = clientOME.get_node("ns=1;i=150001523")
+# P_max_Wr2 = clientOME.get_node("ns=1;i=150003429")
+# P_max_Wr3 = clientOME.get_node("ns=1;i=150005335")
 
-# beta_Wr1 = clientOME.get_node("ns=1;i= ----- ")
-# beta_Wr2 = clientOME.get_node("ns=1;i= ----- ")
-# beta_Wr3 = clientOME.get_node("ns=1;i= ----- ")
+# beta_Wr1 = clientOME.get_node("ns=1;i=150001524")
+# beta_Wr2 = clientOME.get_node("ns=1;i=150003430")
+# beta_Wr3 = clientOME.get_node("ns=1;i=150005336")
 
 # hack = clientOME.get_node("ns=1;i= ----- ")
 
@@ -303,13 +322,17 @@ class MainWindow(QtWidgets.QMainWindow):
         #     self.sym_Erkannt.setHidden(False)
         # else:
         #     self.sym_Erkannt.set.setHidden(True)
-        #übergabe
+        
+        Wind.set_value(float(wind))
+
+
 
     def check_anomalie(self):
         pass
 
 
 if __name__ == "__main__":
+
     app = QtWidgets.QApplication(sys.argv)
 
     w = MainWindow()
